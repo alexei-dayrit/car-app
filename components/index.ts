@@ -6,9 +6,11 @@ import SearchBar from './SearchBar'
 import SearchManufacturer from './SearchManufacturer'
 import CustomFilter from './CustomFilter';
 import CarCard from './CarCard'
+import CarDetails from './CardDetails'
 
 export {
   CarCard,
+  CarDetails,
   CustomButton,
   CustomFilter,
   Footer,
