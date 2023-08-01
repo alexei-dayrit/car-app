@@ -1,3 +1,5 @@
+import { CarProps } from "@/types";
+
 const axios = require('axios');
 
 // const options = {
@@ -5,7 +7,7 @@ const axios = require('axios');
 //   url: 'https://cars-by-api-ninjas.p.rapidapi.com/v1/cars',
 //   params: {model: 'corolla'},
 //   headers: {
-//     'X-RapidAPI-Key': '3d92dcb08emsh6596f846cc6d7c9p1da7f7jsncf1cd34bdc95',
+//     'X-RapidAPI-Key': '',
 //     'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com'
 //   }
 // };
@@ -33,8 +35,9 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
 };
 
 export async function fetchCars() {
+  const rapidApiKey = process.env.X_RAPID_API_KEY;
   const headers =  {
-    'X-RapidAPI-Key': '3d92dcb08emsh6596f846cc6d7c9p1da7f7jsncf1cd34bdc95',
+    'X-RapidAPI-Key': rapidApiKey,
     'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com'
   }
 
@@ -44,6 +47,22 @@ export async function fetchCars() {
   }
 
   const response = await axios.request(options);
-  console.log('response.data:', response.data[0])
+  // console.log('response.data:', response.data[0])
   return response.data
+}
+
+export const generateCarImageUrl = (car: CarProps, angle?: string) => {
+  const url = new URL('https://cdn.imagin.studio/getimage');
+  const { make, year, model } = car;
+  // below doesn't work, need to fix
+  const imaginApiKey = process.env.IMAGIN_API_KEY;
+
+  url.searchParams.append('customer', 'hrjavascript-mastery');
+  url.searchParams.append('make', make);
+  url.searchParams.append('modelFamily', model.split(' ')[0]);
+  url.searchParams.append('zoomType', 'fullscreen');
+  url.searchParams.append('modelYear', `${year}`);
+  url.searchParams.append('angle', `${angle}`);
+
+  return `${url}`;
 }
