@@ -19,9 +19,9 @@ const SearchManufacturer = ({manufacturer, setManufacturer}:
           );
 
   return (
-    <div className='search-manufacturer'>
+    <div className="search-manufacturer">
       <Combobox>
-        <div className='relative w-full'>
+        <div className="relative w-full">
           <Combobox.Button className={"absolute top-[14px]"}>
             <Image
               src="/car-logo.svg"
@@ -34,7 +34,7 @@ const SearchManufacturer = ({manufacturer, setManufacturer}:
 
           <Combobox.Input
             className="search-manufacturer__input"
-            placeholder='Volkswagen'
+            placeholder="Volkswagen"
             displayValue={(manufacturer: string) => manufacturer}
             onChange={(e) => setQuery(e.target.value)}
           />
@@ -44,28 +44,27 @@ const SearchManufacturer = ({manufacturer, setManufacturer}:
             leave="transition ease-in duration-100"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
-            afterLeave={() => setQuery('')}
+            afterLeave={() => setQuery("")}
           >
             <Combobox.Options>
-            {filteredManufacturers.map((item) => (
-                  <Combobox.Option
-                    key={item}
-                    className={({active}) => `
+              {filteredManufacturers.map((item) => (
+                <Combobox.Option
+                  key={item}
+                  className={({ active }) => `
                       relative search-manufacturer__option
-                      ${active ? 'bg-primary-blue text-white' : 'text-gray-900'}
+                      ${active ? "bg-primary-blue text-white" : "text-gray-900"}
                     `}
-                    value={item}
-                  >
-                    {item}
-                  </Combobox.Option>
-              ))
-            }
+                  value={item}
+                >
+                  {item}
+                </Combobox.Option>
+              ))}
             </Combobox.Options>
           </Transition>
         </div>
       </Combobox>
     </div>
-  )
+  );
 }
 
 export default SearchManufacturer
