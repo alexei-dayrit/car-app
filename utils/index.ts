@@ -47,16 +47,17 @@ export async function fetchCars() {
   }
 
   const response = await axios.request(options);
-  console.log('response.data:', response.data[0])
+  // console.log('response.data:', response.data[0])
   return response.data
 }
 
 export const generateCarImageUrl = (car: CarProps, angle?: string) => {
   const url = new URL('https://cdn.imagin.studio/getimage');
   const { make, year, model } = car;
-  const imaginAPiKey = process.env.IMAGIN_API_KEY;
+  // below doesn't work, need to fix
+  const imaginApiKey = process.env.IMAGIN_API_KEY;
 
-  url.searchParams.append('customer', imaginAPiKey || '');
+  url.searchParams.append('customer', 'hrjavascript-mastery');
   url.searchParams.append('make', make);
   url.searchParams.append('modelFamily', model.split(' ')[0]);
   url.searchParams.append('zoomType', 'fullscreen');
