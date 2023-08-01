@@ -88,9 +88,7 @@ const CarCard = ({ car }: CarCardProps) => {
             rightIcon="/right-arrow.svg"
             handleClick={() => setIsOpen(true)}
           />
-
         </div>
-
       </div>
     </div>
   );
