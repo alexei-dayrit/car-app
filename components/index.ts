@@ -5,8 +5,10 @@ import Navbar from './Navbar'
 import SearchBar from './SearchBar'
 import SearchManufacturer from './SearchManufacturer'
 import CustomFilter from './CustomFilter';
+import CarCard from './CarCard'
 
 export {
+  CarCard,
   CustomButton,
   CustomFilter,
   Footer,
