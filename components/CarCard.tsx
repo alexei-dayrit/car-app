@@ -30,8 +30,53 @@ const CarCard = ({ car }: CarCardProps) => {
       </p>
 
       <div className="relative w-full h-40 my-3 object-contain">
-        <Image src="/hero.png" alt="Car Model" fill priority
-        className="object-contain" />
+        <Image
+          src="/hero.png"
+          alt="Car Model"
+          fill
+          priority
+          className="object-contain"
+        />
+      </div>
+
+      <div className="relative flex w-full mt-2">
+        <div className="flex group-hover:invisible w-full justify-between text-gray">
+          <div className="flex flex-col justify-center items-center gap-2">
+            <Image
+              src="/steering-wheel.svg"
+              width={20}
+              height={20}
+              alt="Steering Wheel Icon"
+            />
+            <p className="text-[14px]">
+              {transmission === "a" ? "Automatic" : "Manual"}
+            </p>
+          </div>
+
+          <div className="flex flex-col justify-center items-center gap-2">
+            <Image
+              src="/tire.svg"
+              width={20}
+              height={20}
+              alt="Tire Icon"
+            />
+            <p className="text-[14px]">
+              {drive.toUpperCase()}
+            </p>
+          </div>
+
+          <div className="flex flex-col justify-center items-center gap-2">
+            <Image
+              src="/gas.svg"
+              width={20}
+              height={20}
+              alt="MPG Icon"
+            />
+            <p className="text-[14px]">
+              {city_mpg} MPG
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
