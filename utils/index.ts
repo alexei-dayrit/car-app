@@ -1,4 +1,4 @@
-import { CarProps } from "@/types";
+import { CarProps, FilterProps } from "@/types";
 
 const axios = require('axios');
 
@@ -34,7 +34,8 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
   return rentalRatePerDay.toFixed(0);
 };
 
-export async function fetchCars() {
+export async function fetchCars(filters: FilterProps) {
+  const { fuel, limit, model, manufacturer, year } = filters;
   const rapidApiKey = process.env.X_RAPID_API_KEY;
   const headers =  {
     'X-RapidAPI-Key': rapidApiKey,
@@ -42,7 +43,14 @@ export async function fetchCars() {
   }
 
   const options = {
-    url: 'https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=corolla',
+    url: 'https://cars-by-api-ninjas.p.rapidapi.com/v1/cars',
+    params: {
+      fuel_type: fuel,
+      limit,
+      model,
+      manufacturer,
+      year
+    },
     headers: headers
   }
 
